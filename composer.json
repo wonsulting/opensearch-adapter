@@ -1,5 +1,5 @@
 {
-    "name": "friendsofcat/opensearch-adapter",
+    "name": "wonsulting/opensearch-adapter",
     "description": "Adapter for official PHP OpenSearch client",
     "keywords": [
         "opensearch",
@@ -30,7 +30,7 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
-        "friendsofcat/opensearch-client": "^2.0"
+        "wonsulting/opensearch-client": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
