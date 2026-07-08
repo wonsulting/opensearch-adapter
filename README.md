@@ -9,27 +9,26 @@ OpenSearch Adapter is an adapter for the official PHP OpenSearch client. It's de
 * [Configuration](#configuration)
 * [Index Management](#index-management)
 * [Document Management](#document-management)
-* [Point in Time Management](#point-in-time-management)
 
 ## Compatibility
 
-The current version of OpenSearch Adapter has been tested with the following configuration:
+The current version of OpenSearch Adapter supports the following configuration:
 
-* PHP 7.4-8.x
+* PHP 8.2+
 * OpenSearch 2.x
-* Laravel 6.x-8.x
+* Laravel 11.x - 13.x
 
 ## Installation
 
 The library can be installed via Composer:
 
 ```bash
-composer require friendsofcat/opensearch-adapter
+composer require wonsulting/opensearch-adapter
 ```
 
 ## Configuration
 
-OpenSearch Adapter uses [`friendsofcat/opensearch-client`](https://github.com/friendsofcat/opensearch-client) as a dependency.
+OpenSearch Adapter uses [`wonsulting/opensearch-client`](https://github.com/wonsulting/opensearch-client) as a dependency.
 To change the client settings you need to publish the configuration file first:
 
 ```bash
@@ -38,7 +37,7 @@ php artisan vendor:publish --provider="OpenSearch\Laravel\Client\ServiceProvider
 
 In the newly created `config/opensearch.client.php` file you can define the default connection name and describe multiple
 connections using configuration hashes. Please, refer to
-the [opensearch-client documentation](https://github.com/friendsofcat/opensearch-client) for more details.
+the [opensearch-client documentation](https://github.com/wonsulting/opensearch-client) for more details.
 
 ## Index Management
 
@@ -355,7 +354,7 @@ $searchParameters->suggest([
 $searchParameters->source(['message', 'post_date']);
 
 // retrieve score explanation
-$searchParamaters->explain();
+$searchParameters->explain();
 
 // collapse fields
 $searchParameters->collapse([
@@ -457,7 +456,7 @@ foreach ($hits as $hit) {
     $highlight = $hit->highlight();
     $innerHits = $hit->innerHits();
     $innerHitsTotal = $hit->innerHitsTotal();
-    $innerHitsTotal = $hit->explanation();
+    $explanation = $hit->explaination();
     $raw = $hit->raw();
 }
 

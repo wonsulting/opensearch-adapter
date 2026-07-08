@@ -18,7 +18,7 @@
 
 ## Running the Test Suite
 
-To run tests locally you need PHP (7.2 or higher) and [Composer](https://getcomposer.org/download/).
+To run tests locally you need PHP (8.2 or higher) and [Composer](https://getcomposer.org/download/).
 
 Install the project dependencies:
 ```
@@ -27,17 +27,17 @@ composer install
 
 Run the test suite:
 ```
-make test
+composer test
 ```
 
 ## Code Analysis
 
 To ensure, that your code follows PSR-2 standards you can run:
 ```
-make style-check 
+composer check-style
 ```
 
 It is also recommended to perform static code analysis before opening a PR:
 ```
-make static-analysis 
+composer analyse
 ```
