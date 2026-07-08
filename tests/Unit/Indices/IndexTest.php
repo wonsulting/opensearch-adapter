@@ -5,13 +5,12 @@ namespace OpenSearch\Adapter\Tests\Unit\Indices;
 use OpenSearch\Adapter\Indices\Index;
 use OpenSearch\Adapter\Indices\Mapping;
 use OpenSearch\Adapter\Indices\Settings;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Indices\Index
- *
- * @uses   \OpenSearch\Adapter\Indices\Mapping
- */
+#[CoversClass(Index::class)]
+#[UsesClass(Mapping::class)]
 class IndexTest extends TestCase
 {
     public function test_index_default_values(): void

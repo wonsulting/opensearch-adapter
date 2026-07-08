@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Documents;
 
 use OpenSearch\Adapter\Documents\Document;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Documents\Document
- */
+#[CoversClass(Document::class)]
 final class DocumentTest extends TestCase
 {
     public function test_document_getters(): void

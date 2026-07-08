@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Indices;
 
 use OpenSearch\Adapter\Indices\Alias;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Indices\Alias
- */
+#[CoversClass(Alias::class)]
 final class AliasTest extends TestCase
 {
     public function test_alias_getters(): void

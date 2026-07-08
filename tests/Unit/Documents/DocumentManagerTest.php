@@ -8,22 +8,22 @@ use OpenSearch\Adapter\Documents\Routing;
 use OpenSearch\Adapter\Exceptions\BulkOperationException;
 use OpenSearch\Adapter\Search\Hit;
 use OpenSearch\Adapter\Search\SearchParameters;
+use OpenSearch\Adapter\Search\SearchResult;
 use OpenSearch\Client;
 use OpenSearch\Laravel\Client\ClientBuilderInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-/**
- * @covers \OpenSearch\Adapter\Documents\DocumentManager
- *
- * @uses   \OpenSearch\Adapter\Documents\Document
- * @uses   \OpenSearch\Adapter\Documents\Routing
- * @uses   \OpenSearch\Adapter\Exceptions\BulkOperationException
- * @uses   \OpenSearch\Adapter\Search\Hit
- * @uses   \OpenSearch\Adapter\Search\SearchParameters
- * @uses   \OpenSearch\Adapter\Search\SearchResult
- */
+#[CoversClass(DocumentManager::class)]
+#[UsesClass(Document::class)]
+#[UsesClass(Routing::class)]
+#[UsesClass(BulkOperationException::class)]
+#[UsesClass(Hit::class)]
+#[UsesClass(SearchParameters::class)]
+#[UsesClass(SearchResult::class)]
 final class DocumentManagerTest extends TestCase
 {
     private MockObject $client;

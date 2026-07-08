@@ -6,22 +6,22 @@ use OpenSearch\Adapter\Indices\Alias;
 use OpenSearch\Adapter\Indices\Index;
 use OpenSearch\Adapter\Indices\IndexManager;
 use OpenSearch\Adapter\Indices\Mapping;
+use OpenSearch\Adapter\Indices\MappingProperties;
 use OpenSearch\Adapter\Indices\Settings;
 use OpenSearch\Client;
 use OpenSearch\Laravel\Client\ClientBuilderInterface;
 use OpenSearch\Namespaces\IndicesNamespace;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Indices\IndexManager
- *
- * @uses   \OpenSearch\Adapter\Indices\Alias
- * @uses   \OpenSearch\Adapter\Indices\Index
- * @uses   \OpenSearch\Adapter\Indices\Mapping
- * @uses   \OpenSearch\Adapter\Indices\MappingProperties
- * @uses   \OpenSearch\Adapter\Indices\Settings
- */
+#[CoversClass(IndexManager::class)]
+#[UsesClass(Alias::class)]
+#[UsesClass(Index::class)]
+#[UsesClass(Mapping::class)]
+#[UsesClass(MappingProperties::class)]
+#[UsesClass(Settings::class)]
 class IndexManagerTest extends TestCase
 {
     private MockObject $indices;

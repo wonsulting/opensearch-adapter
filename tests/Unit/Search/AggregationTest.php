@@ -4,13 +4,12 @@ namespace OpenSearch\Adapter\Tests\Unit\Search;
 
 use OpenSearch\Adapter\Search\Aggregation;
 use OpenSearch\Adapter\Search\Bucket;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\Aggregation
- *
- * @uses   \OpenSearch\Adapter\Search\Bucket
- */
+#[CoversClass(Aggregation::class)]
+#[UsesClass(Bucket::class)]
 final class AggregationTest extends TestCase
 {
     private Aggregation $aggregation;

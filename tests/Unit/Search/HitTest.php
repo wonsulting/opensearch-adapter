@@ -7,14 +7,13 @@ use OpenSearch\Adapter\Documents\Document;
 use OpenSearch\Adapter\Search\Explanation;
 use OpenSearch\Adapter\Search\Highlight;
 use OpenSearch\Adapter\Search\Hit;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\Hit
- *
- * @uses   \OpenSearch\Adapter\Documents\Document
- * @uses   \OpenSearch\Adapter\Search\Highlight
- */
+#[CoversClass(Hit::class)]
+#[UsesClass(Document::class)]
+#[UsesClass(Highlight::class)]
 final class HitTest extends TestCase
 {
     private Hit $hit;
