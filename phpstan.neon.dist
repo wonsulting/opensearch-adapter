@@ -3,10 +3,12 @@ includes:
 
 parameters:
   level: max
-  checkMissingIterableValueType: false
-  checkGenericClassInNonGenericObjectType: false
   paths:
     - src
   ignoreErrors:
+    # Replaces the PHPStan 1.x options checkMissingIterableValueType / checkGenericClassInNonGenericObjectType,
+    # both removed in PHPStan 2. This library models OpenSearch responses as untyped arrays by design.
+    - identifier: missingType.iterableValue
+    - identifier: missingType.generics
     - '#Unable to resolve the template type (TKey|TValue) in call to function collect#'
     - '#Parameter .+? of method Illuminate\\Support\\Collection<.+?>::.+?\(\) expects .+? given#'
