@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Search;
 
 use OpenSearch\Adapter\Search\Explanation;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\Explanation
- */
+#[CoversClass(Explanation::class)]
 final class ExplanationTest extends TestCase
 {
     public function test_value_can_be_retrieved_for_explanation(): void

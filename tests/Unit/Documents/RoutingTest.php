@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Documents;
 
 use OpenSearch\Adapter\Documents\Routing;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Documents\Routing
- */
+#[CoversClass(Routing::class)]
 final class RoutingTest extends TestCase
 {
     public function test_routing_values_can_be_added_and_retrieved(): void

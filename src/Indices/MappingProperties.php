@@ -90,7 +90,7 @@ final class MappingProperties implements Arrayable
         $property = ['type' => Str::snake($method)];
 
         if (isset($arguments[1])) {
-            $property += $arguments[1];
+            $property += (array) $arguments[1];
         }
 
         $this->properties[$arguments[0]] = $property;

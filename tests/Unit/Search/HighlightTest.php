@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Search;
 
 use OpenSearch\Adapter\Search\Highlight;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\Highlight
- */
+#[CoversClass(Highlight::class)]
 final class HighlightTest extends TestCase
 {
     public function test_snippets_can_be_retrieved_for_highlighted_field(): void

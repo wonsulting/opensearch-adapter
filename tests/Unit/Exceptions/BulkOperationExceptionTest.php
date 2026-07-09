@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Exceptions;
 
 use OpenSearch\Adapter\Exceptions\BulkOperationException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Exceptions\BulkOperationException
- */
+#[CoversClass(BulkOperationException::class)]
 final class BulkOperationExceptionTest extends TestCase
 {
     public function test_raw_result_can_be_retrieved(): void

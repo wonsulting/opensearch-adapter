@@ -3,13 +3,13 @@
 namespace OpenSearch\Adapter\Tests\Unit\Indices;
 
 use OpenSearch\Adapter\Indices\Mapping;
+use OpenSearch\Adapter\Indices\MappingProperties;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Indices\Mapping
- *
- * @uses   \OpenSearch\Adapter\Indices\MappingProperties
- */
+#[CoversClass(Mapping::class)]
+#[UsesClass(MappingProperties::class)]
 class MappingTest extends TestCase
 {
     public function test_field_names_can_be_disabled(): void

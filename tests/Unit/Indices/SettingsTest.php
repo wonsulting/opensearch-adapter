@@ -4,14 +4,14 @@ namespace OpenSearch\Adapter\Tests\Unit\Indices;
 
 use BadMethodCallException;
 use OpenSearch\Adapter\Indices\Settings;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Indices\Settings
- */
+#[CoversClass(Settings::class)]
 class SettingsTest extends TestCase
 {
-    public function optionsProvider(): array
+    public static function optionsProvider(): array
     {
         return [
             [
@@ -63,10 +63,9 @@ class SettingsTest extends TestCase
     }
 
     /**
-     * @dataProvider optionsProvider
-     *
      * @testdox Test $option option setter
      */
+    #[DataProvider('optionsProvider')]
     public function test_option_setter(string $option, array $configuration, array $expected): void
     {
         $actual = (new Settings())->$option($configuration);

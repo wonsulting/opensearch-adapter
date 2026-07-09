@@ -7,16 +7,15 @@ use OpenSearch\Adapter\Search\Aggregation;
 use OpenSearch\Adapter\Search\Hit;
 use OpenSearch\Adapter\Search\SearchResult;
 use OpenSearch\Adapter\Search\Suggestion;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\SearchResult
- *
- * @uses   \OpenSearch\Adapter\Exceptions\RawResultReadOnlyException
- * @uses   \OpenSearch\Adapter\Search\Aggregation
- * @uses   \OpenSearch\Adapter\Search\Hit
- * @uses   \OpenSearch\Adapter\Search\Suggestion
- */
+#[CoversClass(SearchResult::class)]
+#[UsesClass(RawResultReadOnlyException::class)]
+#[UsesClass(Aggregation::class)]
+#[UsesClass(Hit::class)]
+#[UsesClass(Suggestion::class)]
 final class SearchResultTest extends TestCase
 {
     public function test_hits_can_be_retrieved(): void

@@ -1,0 +1,403 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$params of method OpenSearch\\Client\:\:search\(\) expects array\{index\?\: mixed, _source\?\: mixed, _source_excludes\?\: mixed, _source_includes\?\: mixed, allow_no_indices\?\: bool, allow_partial_search_results\?\: bool, analyze_wildcard\?\: bool, analyzer\?\: string, \.\.\.\}, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Documents/DocumentManager.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Documents\\Routing\:\:get\(\) should return string\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Documents/Routing.php
+
+		-
+			message: '#^Cannot access offset ''error'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Cannot access offset ''reason'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Cannot access offset ''type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Parameter \#1 \$array of function reset expects array\|object, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Parameter \#1 \$value of function count expects array\|Countable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Parameter \#3 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Parameter \#4 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/BulkOperationException.php
+
+		-
+			message: '#^Cannot access offset ''aliases'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Indices/IndexManager.php
+
+		-
+			message: '#^Cannot access offset ''is_write_index'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Indices/IndexManager.php
+
+		-
+			message: '#^Cannot access offset ''mappings'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Indices/IndexManager.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Indices/IndexManager.php
+
+		-
+			message: '#^Cannot access offset ''properties'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Indices/MappingProperties.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Indices\\MappingProperties\:\:normalizeParametersWithProperties\(\) should return array but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Indices/MappingProperties.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: src/Indices/MappingProperties.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Aggregation.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Aggregation.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Bucket\:\:docCount\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Bucket.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Bucket.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Explanation\:\:description\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Explanation.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Explanation\:\:value\(\) should return float but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Explanation.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Explanation.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Explanation.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Highlight.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Highlight.php
+
+		-
+			message: '#^Cannot access offset ''hits'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Cannot access offset ''total'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Cannot access offset ''value'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Hit\:\:indexName\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Hit\:\:score\(\) should return float\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Hit\:\:sort\(\) should return array\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Parameter \#1 \$id of class OpenSearch\\Adapter\\Documents\\Document constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Parameter \#1 \$rawResult of class OpenSearch\\Adapter\\Search\\Explanation constructor expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Parameter \#1 \$rawResult of class OpenSearch\\Adapter\\Search\\Highlight constructor expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Parameter \#2 \$content of class OpenSearch\\Adapter\\Documents\\Document constructor expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Hit.php
+
+		-
+			message: '#^Cannot access offset ''_source'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''aggregations'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''collapse'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''from'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''highlight'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''indices_boost'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''min_score'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''post_filter'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''query'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''rescore'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''script_fields'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''size'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''sort'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''suggest'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''track_scores'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''track_total_hits'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Search/SearchParameters.php
+
+		-
+			message: '#^Cannot access offset ''hits'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Cannot access offset ''total'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Cannot access offset ''value'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\SearchResult\:\:total\(\) should return int\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/SearchResult.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Suggestion\:\:length\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Suggestion.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Suggestion\:\:offset\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Suggestion.php
+
+		-
+			message: '#^Method OpenSearch\\Adapter\\Search\\Suggestion\:\:text\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Search/Suggestion.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|iterable\<\(int\|string\), mixed\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Search/Suggestion.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Search/Suggestion.php

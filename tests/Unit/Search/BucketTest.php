@@ -3,11 +3,10 @@
 namespace OpenSearch\Adapter\Tests\Unit\Search;
 
 use OpenSearch\Adapter\Search\Bucket;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OpenSearch\Adapter\Search\Bucket
- */
+#[CoversClass(Bucket::class)]
 final class BucketTest extends TestCase
 {
     private Bucket $bucket;
