@@ -4,18 +4,18 @@ How to install, test, analyse, and release `wonsulting/opensearch-adapter`, and 
 from the WonsultingAI app. For what the package *is* and how it is structured, see
 [architecture.md](./architecture.md).
 
-> **Read this first.** As of this writing a plain `composer install` **fails** on a fresh checkout, and CI is
-> **red**, because of an unresolved security-advisory block on the pinned dev dependencies. This is a known
-> issue with a documented local workaround (see [Troubleshooting](#troubleshooting--known-issues)); the real
-> fix is a separate dependency/CI modernization task. Every command in this runbook was executed while writing
-> it, and the outputs shown are the real ones observed on the versions noted.
+> **Read this first.** The dependency/CI modernization has landed (EN-724 raised the platform floor and
+> removed `orchestra/testbench`; EN-728 rebuilt the CI matrix). A plain `composer install` now resolves
+> cleanly and CI is green, running a PHP 8.2–8.5 × `illuminate/support` ^11–^13 matrix. Note that some
+> detailed figures further down — the "Observed output" tool versions and the test base-class BypassFinal
+> note — still describe the pre-modernization state and are being refreshed in a separate docs pass.
 
 ## Prerequisites
 
 - **PHP** and **Composer 2.x**.
 - Documented target runtime: **PHP 8.2+** (per the README and `CONTRIBUTING.md`).
-- Actual `composer.json` floor: **`php: ^7.4 || ^8.0`** and **`illuminate/support` for Laravel 6–13**. This is
-  wider than the documented support matrix — see the [compatibility note](#compatibility-note).
+- `composer.json` floor now matches: **`php: ^8.2`** and **`illuminate/support: ^11 || ^12 || ^13`** (Laravel
+  11–13) — see the [compatibility note](#compatibility-note).
 - No database or running OpenSearch cluster is needed for the test suite: tests are pure unit tests that mock
   the client.
 
@@ -25,23 +25,20 @@ from the WonsultingAI app. For what the package *is* and how it is structured, s
 composer install
 ```
 
-On a fresh checkout under the current dependency pins this currently **fails** at the dependency-resolution
-step (security advisories on the transitively-required Laravel 9). See
-[Troubleshooting](#troubleshooting--known-issues) for the reason and the local workaround that produces a
-working `vendor/`. There is intentionally **no committed `composer.lock`** (this is a library; `/vendor` and
-`/composer.lock` are git-ignored).
+On a fresh checkout this resolves cleanly (the old Laravel-9 security-advisory block was removed together with
+`orchestra/testbench` in the EN-724 modernization). There is intentionally **no committed `composer.lock`**
+(this is a library; `/vendor` and `/composer.lock` are git-ignored).
 
 ## Compatibility note
 
-The stated compatibility and the actual constraints disagree; this is a known inconsistency to reconcile in a
-later modernization phase. Documented here so the discrepancy is not mistaken for a bug:
+The documented support and the actual constraints now agree across the README, `composer.json`, and CI:
 
 | Source | PHP | Laravel |
 | --- | --- | --- |
 | README / `CONTRIBUTING.md` | 8.2+ | 11.x – 13.x |
-| `composer.json` (`require`) | `^7.4 || ^8.0` | 6 – 13 (`illuminate/support`) |
-| `composer.json` (`require-dev`) | — | 9 (via `orchestra/testbench ^7.5`) |
-| CI `test.yml` matrix | 7.4, 8.0, 8.1, 8.2 | testbench 5.0 / 6.0 / 7.0 / 8.5 (Laravel 7 / 8 / 9 / 10) |
+| `composer.json` (`require`) | `^8.2` | `illuminate/support: ^11 \|\| ^12 \|\| ^13` |
+| `composer.json` (`require-dev`) | — | — (no `orchestra/testbench`) |
+| CI `test.yml` matrix | 8.2 / 8.3 / 8.4 / 8.5 | `illuminate/support` ^11 / ^12 / ^13 (excl. 8.2 × ^13) |
 
 ## Composer scripts
 
@@ -107,31 +104,31 @@ Xdebug or PCOV is installed. CI runs with `coverage: none`, so coverage is never
 
 ## CI ↔ script mapping
 
-CI lives in `.github/workflows/`. The three quality workflows trigger on pushes to any branch **except
-`master`**, and ignore tags (so tag-based releases don't re-run them).
+CI lives in `.github/workflows/`. The three quality workflows trigger on **push and pull_request to
+`master`**.
 
 | Workflow file | Name | PHP | Runs |
 | --- | --- | --- | --- |
-| `test.yml` | Tests | matrix 7.4 / 8.0 / 8.1 / 8.2 | `composer test` |
-| `code-style.yml` | Code style | 8.0 | `composer check-style` |
-| `static-analysis.yml` | Static analysis | 8.0 | `composer analyse` |
+| `test.yml` | Tests | matrix PHP 8.2 / 8.3 / 8.4 / 8.5 × `illuminate/support` ^11 / ^12 / ^13 (excl. 8.2 × ^13) | `composer test` |
+| `code-style.yml` | Code style | 8.3 | `composer check-style` |
+| `static-analysis.yml` | Static analysis | 8.3 | `composer analyse` |
 | `stale.yml` | Close stale issues/PRs | — | scheduled housekeeping (unrelated) |
 
 Notes:
 
 - `test-coverage` and `fix-style` have **no CI job** — they are local-only.
-- `test.yml` does **not** run a plain `composer install`; each matrix row force-installs its own
-  testbench/phpunit versions:
-  `composer require --no-interaction --dev orchestra/testbench:^<v> phpunit/phpunit:^<v>`.
+- `test.yml` pins `illuminate/support` per matrix cell rather than running a plain `composer install`:
+  `composer require "illuminate/support:^<v>" --no-interaction --no-update` followed by
+  `composer update --no-interaction --prefer-stable`. There is no `orchestra/testbench`.
   `code-style.yml` and `static-analysis.yml` use plain `composer install --no-interaction`.
 
 ## Testing / tooling notes
 
 - **Test layout:** a single `unit` testsuite (`phpunit.xml.dist`) over `tests/Unit`. There is no
   feature/integration suite.
-- **Base class:** every test extends `PHPUnit\Framework\TestCase` directly. `orchestra/testbench` is a
-  dev-dependency and drives the CI matrix (to prove install-time compatibility across Laravel versions) but no
-  test extends Testbench's `TestCase`.
+- **Base class:** every test extends `PHPUnit\Framework\TestCase` directly. There is no `orchestra/testbench`
+  dependency; install-time compatibility across Laravel versions is proven by the `test.yml` matrix (which
+  pins `illuminate/support` per cell), not by a Testbench base class.
 - **Mocking `final` classes:** `tests/Extensions/BypassFinalExtension.php` (a PHPUnit `BeforeTestHook`) calls
   `DG\BypassFinals::enable()` before each test, which is why `dg/bypass-finals` is a dev-dependency.
 - **Static analysis:** `phpstan.neon.dist`, level `max`, analyses `src` only.
@@ -172,9 +169,7 @@ The package is distributed via Composer as `wonsulting/opensearch-adapter` and r
 It follows [semantic versioning](https://semver.org/); keep the major in step with the
 `wonsulting/opensearch-client` line it targets (currently `^2.0`).
 
-1. Ensure `master` is green: `composer test`, `composer analyse`, and `composer check-style` all pass. (See
-   [Troubleshooting](#troubleshooting--known-issues) — this is currently blocked until the dependency/CI fix
-   lands.)
+1. Ensure `master` is green: `composer test`, `composer analyse`, and `composer check-style` all pass.
 2. Choose the next semver tag (`vMAJOR.MINOR.PATCH`): PATCH for fixes, MINOR for backward-compatible features,
    MAJOR for breaking API changes (e.g. renaming `Hit::explaination()`, or dropping PHP/Laravel versions).
 3. Tag and push from `master`:
@@ -190,42 +185,13 @@ It follows [semantic versioning](https://semver.org/); keep the major in step wi
 
 ## Troubleshooting / known issues
 
-### `composer install` fails with security-advisory errors
+### `composer install` security-advisory block (historical — resolved)
 
-Symptom (fresh checkout, default Composer policy):
-
-```
-Your requirements could not be resolved to an installable set of packages.
-  Problem 1
-    - Root composer.json requires orchestra/testbench ^7.5 ...
-    - orchestra/testbench[...] require laravel/framework ^9.x -> found laravel/framework[v9.x]
-      but these were not loaded, because they are affected by security advisories (...)
-```
-
-**Cause:** `require-dev` pins `orchestra/testbench ^7.5`, which resolves to a Laravel 9 (`laravel/framework`
-v9.x) dev tree. Every Laravel 9 release carries security advisories, and Composer's default policy refuses to
-install advisory-flagged packages. Because there is no committed `composer.lock`, the resolver has to pick
-versions fresh every time and hits the block.
-
-**CI impact:** the same block hits `code-style.yml`/`static-analysis.yml` (plain `composer install`) and the
-lower rows of `test.yml`, so **all three quality workflows are currently red**, failing within seconds at the
-dependency step — before any test/analysis tool runs.
-
-**Real fix (out of scope here):** bump the dev toolchain off advisory-blocked Laravel (newer
-`orchestra/testbench` + `phpunit`, which entails migrating the `BypassFinalExtension` to PHPUnit 10+/updating
-`phpunit.xml.dist`) and refresh the CI PHP/matrix versions. That is tracked as a separate dependency/CI
-modernization task, not this documentation change.
-
-**Local workaround (maintainers only — never commit):** to get a working `vendor/` today so you can run the
-scripts, disable advisory blocking in your **global** Composer config and ignore platform requirements:
-
-```bash
-composer config --global policy.advisories.block false
-composer install --ignore-platform-reqs
-```
-
-Revert the global setting when done (`composer config --global --unset policy.advisories.block`, or set it back
-to `true`). Do not add either of these to the project's `composer.json`.
+Earlier revisions pinned `orchestra/testbench ^7.5`, which pulled a Laravel 9 (`laravel/framework` v9.x) dev
+tree. Every Laravel 9 release carries security advisories, so Composer's default policy refused to install and
+all three quality workflows were red at the dependency step. The EN-724 modernization removed
+`orchestra/testbench` entirely (the tests are plain PHPUnit and mock the client), so a fresh `composer install`
+now resolves cleanly and no workaround is needed.
 
 ### `composer analyse` reports errors on PHP 8.4
 
